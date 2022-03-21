@@ -2,30 +2,30 @@
 
 namespace App\Repository;
 
-use App\Entity\Article;
+use App\Entity\Articles;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Article|null find($id, $lockMode = null, $lockVersion = null)
- * @method Article|null findOneBy(array $criteria, array $orderBy = null)
- * @method Article[]    findAll()
- * @method Article[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Articles|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Articles|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Articles[]    findAll()
+ * @method Articles[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ArticleRepository extends ServiceEntityRepository
+class ArticlesRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Article::class);
+        parent::__construct($registry, Articles::class);
     }
 
     /**
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function add(Article $entity, bool $flush = true): void
+    public function add(Articles $entity, bool $flush = true): void
     {
         $this->_em->persist($entity);
         if ($flush) {
@@ -37,7 +37,7 @@ class ArticleRepository extends ServiceEntityRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function remove(Article $entity, bool $flush = true): void
+    public function remove(Articles $entity, bool $flush = true): void
     {
         $this->_em->remove($entity);
         if ($flush) {
@@ -46,7 +46,7 @@ class ArticleRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Article[] Returns an array of Article objects
+    //  * @return Articles[] Returns an array of Articles objects
     //  */
     /*
     public function findByExampleField($value)
@@ -63,7 +63,7 @@ class ArticleRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Article
+    public function findOneBySomeField($value): ?Articles
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.exampleField = :val')

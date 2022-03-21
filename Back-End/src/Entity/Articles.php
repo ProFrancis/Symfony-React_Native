@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
+use App\Repository\ArticlesRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @ApiResource()
+ * @ORM\Entity(repositoryClass=ArticlesRepository::class)
  */
-class User
+class Articles
 {
     /**
      * @ORM\Id
@@ -25,9 +25,9 @@ class User
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="integer")
      */
-    private $email;
+    private $price;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -37,13 +37,12 @@ class User
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $password;
+    private $description;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $role;
-
+    private $isActive;
 
     public function getId(): ?int
     {
@@ -62,14 +61,14 @@ class User
         return $this;
     }
 
-    public function getEmail(): ?string
+    public function getPrice(): ?int
     {
-        return $this->email;
+        return $this->price;
     }
 
-    public function setEmail(string $email): self
+    public function setPrice(int $price): self
     {
-        $this->email = $email;
+        $this->price = $price;
 
         return $this;
     }
@@ -86,26 +85,26 @@ class User
         return $this;
     }
 
-    public function getPassword(): ?string
+    public function getDescription(): ?string
     {
-        return $this->password;
+        return $this->description;
     }
 
-    public function setPassword(string $password): self
+    public function setDescription(string $description): self
     {
-        $this->password = $password;
+        $this->description = $description;
 
         return $this;
     }
 
-    public function getRole(): ?int
+    public function getIsActive(): ?int
     {
-        return $this->role;
+        return $this->isActive;
     }
 
-    public function setRole(int $role): self
+    public function setIsActive(int $isActive): self
     {
-        $this->role = $role;
+        $this->isActive = $isActive;
 
         return $this;
     }
